@@ -73,107 +73,112 @@ public class Kotik {
     public int getHunt() {return play;}
     public void setHunt(int hunt) {this.hunt = hunt;}
 
-    public void Play(int play) {
+    public boolean play() {
         setPlay(play);
         if (play > 0) {
-            boolean a = true;
             play--;
-            System.out.println("Котик наигрался. Действие выполнено  " + a + " уровень игривости: " + play);
+            System.out.println("Котик наигрался. Действие выполнено  " + " уровень игривости: " + play);
+            return true;
         } else {
-            boolean a = false;
-            System.out.println("Котик хочет играть " + a);
+            System.out.println("Котик хочет играть ");
+            return  false;
         }
     }
-
-    public void Sleep(int sleep) {
-
+    public boolean sleep() {
         setSleep(sleep);
         if (sleep > 0) {
-            boolean a = true;
             sleep--;
-            System.out.println("Котик выспался. Действие выполнено " + a + " уровень сытости: " + sleep);
+            System.out.println("Котик выспался. Действие выполнено. уровень сытости: " + sleep);
+            return true;
         } else {
-            boolean a = false;
-            System.out.println("Котик хочет спать " + a);
+            System.out.println("Котик хочет спать ");
+            return false;
         }
     }
 
-    public void Wash(int wash) {
+    public boolean wash () {
         setWash(wash);
         if (wash > 0) {
-            boolean a = true;
             wash--;
-            System.out.println("Котик умытый. Действие выполнено  " + a + " уровень умытости: " + wash);
+            System.out.println("Котик умытый. Действие выполнено  " + " уровень умытости: " + wash);
+            return true;
         } else {
-            boolean a = false;
-            System.out.println("Котик неумытый " + a);
+            System.out.println("Котик неумытый ");
+            return false;
         }
     }
 
-    public void Walk(int walk) {
+    public boolean walk() {
         setWalk(walk);
         if (walk > 0) {
-            boolean a = true;
             walk--;
-            System.out.println("Котик нагулялся. Действие выполнено  " + a + " уровень нагуленности: " + walk);
+            System.out.println("Котик нагулялся. Действие выполнено  " + " уровень нагуленности: " + walk);
+        return  true;
         } else {
-            boolean a = false;
-            System.out.println("котик хочет гулять " + a);
+            System.out.println("котик хочет гулять ");
+            return false;
         }
     }
 
-    public void Hunt(int hunt) {
+    public boolean hunt () {
         setHunt(hunt);
         if (hunt > 0) {
-            boolean a = true;
             hunt--;
-            System.out.println("Котик наохотился " + a + " уровень охотничества " + hunt);
+            System.out.println("Котик наохотился " + " уровень охотничества " + hunt);
+        return  true;
         } else {
-            boolean a = false;
-            System.out.println("Котик хочет охотиться " + a);
+            System.out.println("Котик хочет охотиться ");
+            return  false;
         }
 
     }
-    public int eat(int satiety, int s2) {
+    public boolean eat(int satiety, int s2) {
         this.satiety = satiety;
         satiety += s2;
         System.out.println(satiety);
-        return satiety;
+        return true;
     }
 
-    public void eat( int satiety,String eda) {
+    public boolean eat( int satiety,String eda) {
         this.eda = eda;
         this.satiety = satiety;
         System.out.println(eda +satiety);
+        return true;
     }
 
-    public void eat() {
+    public boolean eat() {
         this.eda = eda;
         eat(satiety, eda);
+        return  true;
     }
+
+    private String go;
+    public String getGo () {return  go;}
+    public void setGo () {this.go=go;}
+
     public void liveAnotherDay() {
         int number;
         int rand = (int) (Math.random() * 5) + 1;
         for (number = 0; number <24; number++){
             switch (rand) {
                 case 1:
-                    Play(1);
+                    play();
                     number++;
                     System.out.println(number + " - Играл");
                 case 2:
-                    Sleep(2);
+                    sleep();
                     number++;
                     System.out.println(number + " - Спал");
                 case 3:
-                    Wash(3);
+                    wash();
                     number++;
                     System.out.println(number + " - Умывался");
                 case 4:
-                    Walk(4);
+                    walk();
                     number++;
                     System.out.println(number + " - Гулял");
                 case 5:
-                    Hunt(5);
+                    hunt();
                     number++;
                     System.out.println(number + " - Охотился");
                 default:
